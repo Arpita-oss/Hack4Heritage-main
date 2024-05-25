@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+    <link rel='stylesheet' href='stylesheets/style3.css' />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <a style="text-decoration: none; color: black;" href="/upload">
+        <i style="font-size: 32px;" class="ri-arrow-left-line"></i>
+      </a>
+      <h2><%= jsonResponse.name || jsonResponse.botanical_name %></h2>
+      <img id="photo" src="<%= jsonResponse.image_url %>" alt="<%= jsonResponse.name || jsonResponse.botanical_name %>">
+      <div class="info">
+        <p id="fact"><%= jsonResponse.fun_fact %></p>
+        <ul id="stats">
+          <% if (jsonResponse.botanical_name) { %>
+            <li><span id="definition">Botanical Name:</span> <%= jsonResponse.botanical_name %></li>
+            <li><span id="definition">Historical Significance:</span> <%= jsonResponse.historical_significance %></li>
+            <li><span id="definition">Cultural Significance:</span> <%= jsonResponse.cultural_significance %></li>
+            <li><span id="definition">Uses:</span> <%= jsonResponse.uses %></li>
+          <% } else { %>
+            <li><span id="definition">Name:</span> <%= jsonResponse.name %></li>
+            <li><span id="definition">Habitat Country:</span> <%= jsonResponse.habitat_country %></li>
+            <li><span id="definition">Speciality:</span> <%= jsonResponse.speciality %></li>
+            <li><span id="definition">Cultural Significance:</span> <%= jsonResponse.cultural_significance %></li>
+          <% } %>
+        </ul>
+        <p class="description">
+          <%= jsonResponse.description || "No description available." %>
+          <small>Data taken from <a href="https://en.wikipedia.org">Wikipedia</a></small>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
